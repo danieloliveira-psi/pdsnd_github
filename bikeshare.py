@@ -14,7 +14,7 @@ def get_prompt(prompt, options):
         if user_prompt in options:
             return user_prompt
         else:
-            print('n/That is not a valid option. Please, choose from: {", ".join(options)}')
+            print('\nThat is not a valid option. Please, choose from: {", ".join(options)}')
 
 def get_filters():
     """
