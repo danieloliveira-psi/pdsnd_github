@@ -166,10 +166,14 @@ def display_data(df):
     start = 0
     end = 5
     while display == 'yes':
-          print(tabulate(df.iloc[start : end], headers = 'keys', tablefmt = 'psql'))
-          start += 5
-          end += 5
-          display = input('\nDo you want to see 5 more lines of raw data? Enter yes or no.\n').lower()
+		if end >= len(df):
+            print("\nSorry, no more data to show.")
+			break
+		else:
+			print(tabulate(df.iloc[start : end], headers = 'keys', tablefmt = 'psql'))
+			start += 5
+			end += 5
+			display = input('\nDo you want to see 5 more lines of raw data? Enter yes or no.\n').lower()
         
 def main():
     while True:
