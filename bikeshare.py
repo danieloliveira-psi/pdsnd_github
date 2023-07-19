@@ -7,6 +7,15 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
+def get_prompt(prompt, options):
+    """Compares the input with a validated list of options"""
+    while True:
+        user_prompt = input(prompt).lower()
+        if user_prompt in options:
+            return user_prompt
+        else:
+            print('n/That is not a valid option. Please, choose from: {", ".join(options)}')
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -16,21 +25,19 @@ def get_filters():
         (str) month - name of the month to filter by, or "all" to apply no month filter
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
-    print('Hello! Let\'s explore some US bikeshare data!')
+    city_options = ['chicago', 'new york city', 'washington']
+    month_options = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
+    day_options = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+	
+	print('Hello! Let\'s explore some US bikeshare data!')
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
-    city = input('Please, type one of three options: chicago, new york city, washington: ').lower()
-    while city not in ['all', 'chicago', 'new york city', 'washington']:
-        city = input('Please, recall the three options: chicago, new york city, washington.\nSelect one of them: ').lower()
+    city = get_prompt("Please, type one of three options: chicago, new york city, washington: ", city_options)
 
     # TO DO: get user input for month (all, january, february, ... , june)
-    month = input('Please, type the name of the required month (from january to june, or type "all" if you want to see all): ').lower()
-    while month not in ['all', 'january', 'february', 'march', 'april', 'june']:
-        month = input('Please, type a valid month: ').lower()
+    month = get_prompt("Please, type the name of the required month (from january to june, or type 'all' if you want to see all): ", month_options)
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-    day = input('Please, type the day of the week: ').lower()
-    while day not in ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']:
-        day = input('Please, type a valid day of the week: ').lower()
+    day = get_prompt("Please, type the day of the week: ", day_options)
 
     print('-'*40)
     return city, month, day
