@@ -1,5 +1,5 @@
 ### Date created
-Include the date you created this project and README file.
+This project was successfully submitted on the 10th of July and this README.md document was created on the 19th of July.
 
 ### Project Title
 Bike Share Project
